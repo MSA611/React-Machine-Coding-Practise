@@ -30,7 +30,7 @@ const Accordian = () => {
           {data.map((item) => (
             <h1
               onClick={
-                MultiSelect
+                multi
                   ? () => MultiSelect(item.id)
                   : () => handleQuestion(item.id)
               }
@@ -38,7 +38,7 @@ const Accordian = () => {
               className="text-3xl m-4 border-2 border-black font-bold tracking-tight text-gray-900"
             >
               {item.question}
-              {MultiSelect && arr.indexOf(item.id) !== -1 ? (
+              {multi && arr.indexOf(item.id) !== -1 ? (
                 <div className="text-xl font-semibold tracking-tight text-gray-800">
                   {item.answer}
                 </div>
