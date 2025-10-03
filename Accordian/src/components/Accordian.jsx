@@ -2,31 +2,31 @@ import { useState } from "react";
 import data from "./data.js";
 
 const Accordian = () => {
-  const [selected, setSelected] = useState();
+  const [selected, setSelected] = useState(null);
 
-  const handleSingleSelection = (id) => {
-    console.log(id);
+  const handleQuestion = (currentId) => {
+    setSelected(selected === currentId ? null : currentId);
   };
   return (
     <div>
-      <div>
-        {data.length > 0 ? (
-          data.map((data) => {
+      {data.length > 0 ? (
+        <div>
+          {data.map((item) => {
             return (
-              <div className="title">
-                <div
-                  onClick={() => handleSingleSelection(data.id)}
-                  className="content"
-                >
-                  <h3>{data.question}</h3>
-                </div>
+              <div onClick={() => handleQuestion(item.id)} key={item.id}>
+                {item.question}
+                <h3>
+                  {selected === item.id ? (
+                    <h3 key={item.id}>{item.answer}</h3>
+                  ) : null}
+                </h3>
               </div>
             );
-          })
-        ) : (
-          <div>No Data Found</div>
-        )}
-      </div>
+          })}
+        </div>
+      ) : (
+        <h3>Not Data Present</h3>
+      )}
     </div>
   );
 };
