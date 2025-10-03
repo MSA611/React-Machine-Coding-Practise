@@ -17,7 +17,6 @@ const Accordian = () => {
     setArr(copyArr);
   };
 
-  console.log(multi);
   return (
     <div>
       <button
