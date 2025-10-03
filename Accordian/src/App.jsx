@@ -1,5 +1,11 @@
+import Accordian from "./components/Accordian";
+
 const App = () => {
-  return <div></div>;
+  return (
+    <div>
+      <Accordian />
+    </div>
+  );
 };
 
 export default App;
