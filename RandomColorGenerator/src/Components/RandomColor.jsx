@@ -19,6 +19,11 @@ export const RandomColor = () => {
 
   const CreateRgb = () => {
     setType("rgb");
+    let r = generateRandom(256);
+    let g = generateRandom(256);
+    let b = generateRandom(256);
+    let rgb = `rgb(${r},${g},${b})`;
+    setColor(rgb);
   };
 
   return (
