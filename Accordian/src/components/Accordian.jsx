@@ -20,7 +20,7 @@ const Accordian = () => {
           onClick={() => setMultiSelectionl(!multiSelection)}
           className="p-3 hover:bg-red-500 border-2 border-black text-black hover:text-white bg-white m-3 cursor-pointer w-sm"
         >
-          Enable Multi Selection
+          Multi-Selection Enabled
         </button>
       ) : (
         <button
