@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export const RandomColor = () => {
-  const [color, setColor] = useState("#000000");
+  const [color, setColor] = useState("#ffffff");
   const [type, setType] = useState("hex");
   const generateRandom = (length) => {
     return Math.floor(Math.random() * length);
@@ -38,7 +38,7 @@ export const RandomColor = () => {
           backgroundColor: color,
         }}
       >
-        {type === "hex" ? <h3>hex : {color}</h3> : <h3>rgb : {color}</h3>}
+        {type === "hex" ? <h3>hex : {color}</h3> : <h3>Rgb : {color}</h3>}
       </div>
       <button
         style={{
