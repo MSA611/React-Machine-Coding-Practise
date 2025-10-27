@@ -1,50 +1,61 @@
 import { useState } from "react";
 
 export const RandomColor = () => {
-  const [color, setColor] = useState("");
-  const [typeOfColor, setTypeOfColor] = useState("hex");
-
-  const randomGenerator = (length) => {
+  const [color, setColor] = useState("#000000");
+  const [type, setType] = useState("hex");
+  const generateRandom = (length) => {
     return Math.floor(Math.random() * length);
   };
 
   const CreateHex = () => {
-    setColor("hex");
-    const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
-    let hexColor = "#";
+    setType("hex");
+    let hexCode = "#";
+    const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E"];
     for (let i = 0; i < 6; i++) {
-      hexColor += hex[randomGenerator(hex.length)];
+      hexCode += hex[generateRandom(hex.length)];
     }
-    setColor(hexColor);
+    setColor(hexCode);
   };
 
   const CreateRgb = () => {
-    setTypeOfColor("rgb");
-    const r = randomGenerator(256);
-    const g = randomGenerator(256);
-    const b = randomGenerator(256);
-    setColor(`rgb(${r},${g},${b})`);
+    setType("rgb");
   };
 
   return (
     <div>
       <div
         style={{
-          width: "500px",
-          height: "500px",
-          background: color,
+          margin: "5px",
           display: "grid",
           placeContent: "center",
+          width: "500px",
+          height: "500px",
+          backgroundColor: color,
         }}
       >
-        {typeOfColor === "hex" ? (
-          <h3>hex : {color} </h3>
-        ) : (
-          <h3>Rgb : {color} </h3>
-        )}
+        {type === "hex" ? <h3>hex : {color}</h3> : <h3>rgb : {color}</h3>}
       </div>
-      <button onClick={CreateHex}>Generate Hex</button>
-      <button onClick={CreateRgb}>Generate rbg</button>
+      <button
+        style={{
+          border: "2px solid black",
+          padding: "2px",
+          margin: "5px",
+        }}
+        onClick={CreateHex}
+      >
+        Generate Hex{" "}
+      </button>
+
+      <button
+        onClick={CreateRgb}
+        style={{
+          border: "2px solid black",
+          padding: "2px",
+          margin: "5px",
+        }}
+      >
+        Generate Rgb{" "}
+      </button>
     </div>
   );
 };
