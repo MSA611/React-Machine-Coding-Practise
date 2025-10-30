@@ -1,65 +1,53 @@
-import { useState } from "react";
+import React from "react";
 
 export const RandomColor = () => {
-  const [color, setColor] = useState("#ffffff");
-  const [type, setType] = useState("hex");
+  const [color, setColor] = React.useState("#000000");
+  const [type, setType] = React.useState("hex");
+
   const generateRandom = (length) => {
     return Math.floor(Math.random() * length);
   };
 
-  const CreateHex = () => {
+  const Createhex = () => {
     setType("hex");
-    let hexCode = "#";
-    const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E"];
-    for (let i = 0; i < 6; i++) {
-      hexCode += hex[generateRandom(hex.length)];
+    let hex = "#";
+    const arr = ["A", "B", "C", "D", "E", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    for (let i = 1; i <= 6; i++) {
+      hex += arr[generateRandom(arr.length)];
     }
-    setColor(hexCode);
+    setColor(hex);
   };
 
   const CreateRgb = () => {
     setType("rgb");
-    let r = generateRandom(256);
-    let g = generateRandom(256);
-    let b = generateRandom(256);
-    let rgb = `rgb(${r},${g},${b})`;
-    setColor(rgb);
+    const r = generateRandom(256);
+    const g = generateRandom(256);
+    const b = generateRandom(256);
+    setColor(`rgb(${r},${g},${b})`);
   };
 
   return (
     <div>
       <div
+        className="w-[200px] text-white text-center content-center h-[300px] border-2 border-black m-10"
         style={{
-          margin: "5px",
-          display: "grid",
-          placeContent: "center",
-          width: "500px",
-          height: "500px",
           backgroundColor: color,
         }}
       >
-        {type === "hex" ? <h3>hex : {color}</h3> : <h3>Rgb : {color}</h3>}
+        {type === "hex" ? `hex : ${color}` : `RGB : ${color}`}
       </div>
       <button
-        style={{
-          border: "2px solid black",
-          padding: "2px",
-          margin: "5px",
-        }}
-        onClick={CreateHex}
+        onClick={Createhex}
+        className="border-2 border-black p-3 m-3 hover:bg-black hover:text-white cursor-pointer"
       >
-        Generate Hex{" "}
+        Generate Hex
       </button>
 
       <button
         onClick={CreateRgb}
-        style={{
-          border: "2px solid black",
-          padding: "2px",
-          margin: "5px",
-        }}
+        className="border-2 border-black p-3 m-3 hover:bg-black hover:text-white cursor-pointer"
       >
-        Generate Rgb{" "}
+        Generate Rgb
       </button>
     </div>
   );
