@@ -34,6 +34,7 @@ const Accordian = () => {
         <div>
           {data.map((item) => (
             <div
+              key={item.id}
               className="border-2 border-black p-3 m-3 w-sm "
               onClick={
                 multiSelection
